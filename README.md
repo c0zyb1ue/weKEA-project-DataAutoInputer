@@ -5,8 +5,8 @@ weKEA web service가 돌아가기 위해 필요한 사전 데이터를 자동으
 - products
 - images
 - product_options
+<br>
 다음과 같은 순서로 table에 데이터가 들어가게 된다.
-
 > 들어가는 데이터 목록 및 사진 원본은 포함된 csv파일과 사진 폴더 참고.
 
 프로그램 이용방법
