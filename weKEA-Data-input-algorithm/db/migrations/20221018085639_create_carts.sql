@@ -7,6 +7,7 @@ CREATE TABLE carts(
      updated_at TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
      FOREIGN KEY (product_option_id) REFERENCES product_options(id) ON DELETE CASCADE
+     CONSTRAINT carts_user_id_product_option_id_ukey UNIQUE (user_id, product_option_id)
 );
 
 -- migrate:down
