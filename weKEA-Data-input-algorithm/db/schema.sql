@@ -21,8 +21,9 @@ CREATE TABLE `carts` (
   `product_option_id` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `quantity` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
+  UNIQUE KEY `carts_user_id_product_option_id_ukey` (`user_id`,`product_option_id`),
   KEY `product_option_id` (`product_option_id`),
   CONSTRAINT `carts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   CONSTRAINT `carts_ibfk_2` FOREIGN KEY (`product_option_id`) REFERENCES `product_options` (`id`) ON DELETE CASCADE
@@ -84,6 +85,7 @@ CREATE TABLE `orders` (
   `order_status_id` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `quantity` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `product_option_id` (`product_option_id`),
@@ -213,5 +215,7 @@ INSERT INTO `schema_migrations` (version) VALUES
   ('20221018085650'),
   ('20221018085702'),
   ('20221018085709'),
-  ('20221018085710');
+  ('20221018085710'),
+  ('20221024082735'),
+  ('20221024082745');
 UNLOCK TABLES;
